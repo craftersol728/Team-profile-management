@@ -1,6 +1,8 @@
 //imported required package
 var inquirer = require('inquirer');
 var fs = require('fs');
+const { default: Choice } = require('inquirer/lib/objects/choice');
+const { default: Choices } = require('inquirer/lib/objects/choices');
 
 //creating the html buffer
 var buf = `<!DOCTYPE html>
@@ -75,7 +77,7 @@ function buildHtml()
  //saving our buffer to the disk
  writeToFile("output.html", buf);
 }
-
+//manager questions
 const managerQuestions = [
     {
     type:'input',
@@ -102,3 +104,87 @@ const managerQuestions = [
     validate: isEmpty,
     },
 ];
+//intern questions
+const internQuestions = [
+    {
+    type:'input',
+    name:'name',
+    message:'Intern name is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'id',
+    message:'Intern id is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'email',
+    message:'Intern email is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'school',
+    message:'School Intern came from:'
+    validate: isEmpty,
+    },
+];
+//engineer questions
+const engineerQuestions = [
+    {
+    type:'input',
+    name:'name',
+    message:'Engineer name is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'id',
+    message:'Engineer id is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'email',
+    message:'Engineer email is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'github',
+    message:'Engineer\'s github username:'
+    validate: isEmpty,
+    },
+];
+//funciton for adding each person onto the html sheet with infinite looping
+function addMenu (){
+    inquirer.prompt([{
+        type:'list',
+        name: 'selection',
+        message:'add another person?',
+        choices : ['Add an Engineer','Add an Intern','finished'],
+    }]).then((response)=>{
+        if(response.selection == 'add an Engineer') return addEngineer();
+        else if (response.selection == 'add an Intern') return addIntern();
+        else if (response.selection == 'finished') return buildHtml();
+        else return console.log(selection);
+    })
+}
+
+//fucntion to add engineer into the html document
+function addEngineer(){
+    inquirer.prompt(engineerQuestions).then((answers) =>{
+        newEngineer = {};
+        newEngineer.name = answers.name;
+        newEngineer.id = answers.id;
+        newEngineer.email = answers.email;
+        newEngineer.github = answers.github;
+        engineers.push(newEngineer);
+        addMenu();
+    })
+    .catch((error)=>{
+        if(error.isTtyError)
+    })
+}
