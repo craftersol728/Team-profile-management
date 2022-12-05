@@ -60,10 +60,44 @@ function writeToFile(fileName, data)
 //This will take all the entries and build an html page
 function buildHtml()
 {
-    console.log("Entries submitted, check result folder for your html page")
+    console.log("Entries submitted, check result folder for your html page");
     buf +=
+    `<div class ="col-sm member>
+    <h3>${manager.name}</h3>
+    <h4>Manager</h4>
+    <div class = "inner">
+    id: ${manager.id} </br>
+    Email: ${manager.email} </br>
+    office number: ${manager.office}
+    </div>`;
 
-}
+    engineers.forEach(engineer =>
+{
+    buf +=
+    `<div class="col-sm member">
+    <h3>${engineer.name}</h3>
+    <h4>Engineer</h4>
+    <div class="inner">
+    ID: ${engineer.ID}</br>
+    Email: ${engineer.email}</br>
+    Office Number: ${engineer.github}
+    </div>
+    </div>`;
+});
+    interns.forEach(intern =>
+{
+    buf +=
+    `<div class="col-sm member">
+    <h3>${intern.name}</h3>
+    <h4>Intern</h4>
+    <div class="inner">
+    ID: ${intern.id}</br>
+    Email: ${intern.email}</br>
+    Office Number: ${intern.school}
+    </div>
+    </div>`;
+});
+
 
 
 
@@ -73,6 +107,8 @@ function buildHtml()
     </div>
     </body>
     </html>`;
+
+    
 
  //saving our buffer to the disk
  writeToFile("output.html", buf);
@@ -184,7 +220,77 @@ function addEngineer(){
         engineers.push(newEngineer);
         addMenu();
     })
-    .catch((error)=>{
-        if(error.isTtyError)
-    })
+    .catch((error)=>
+    {
+        if(error.isTtyError){
+            console.log('prompt cannot be rendered in the current situation');
+        } else {
+            console.log('something went wrong')
+        }
+    });
 }
+
+function addIntern()
+{
+    inquirer.prompt(internQuestions)
+    .then((answers) =>
+    {
+        newIntern = {};
+        newIntern.name = answers.name;  
+        newIntern.ID = answers.ID;
+        newIntern.email = answers.email;
+        newIntern.school = answers.school;
+        interns.push(newIntern);
+        addMenu();
+    })
+    .catch((error) =>
+    {
+        if (error.isTtyError)
+        {
+            console.log('prompt cannot be rendered in the current environment.');
+        } else
+        {
+            console.log('something went wrong.')
+        }
+    });
+}
+
+function addManager()
+{
+    inquirer.prompt(managerQuestions)
+    .then((answers) =>
+    {
+        //manager.name = Object.values(answers)[0]; 
+        manager.name = answers.name;  
+        manager.ID = answers.ID;
+        manager.email = answers.email;
+        manager.office = answers.office;
+
+        addMenu();
+    })
+    .catch((error) =>
+    {
+        if (error.isTtyError)
+        {
+            console.log('prompt cannot be rendered in the current environment.');
+        } else
+        {
+            console.log('something went wrong.')
+        }
+    });
+}
+
+//an introduction to the script that confirms user intent before capturing CLI focus
+console.log('Welcome to the project team page generation script. This tool will generate a formatted HTML page showcasing your project\'s team members based on your parameters.');
+inquirer.prompt(
+    [
+        {
+            type: 'confirm',
+            name: 'begin',
+            message: 'start?',
+        }
+    ]).then((response) =>
+    {
+        if (response.begin) return addManager();
+        else return console.log('bye.');
+    });
