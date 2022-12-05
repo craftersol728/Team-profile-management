@@ -30,6 +30,36 @@ var buf = `<!DOCTYPE html>
 <body>
         <div style"width:100%; height:auto;text-align:center;Background-color:white;">
             <h1> This Team </h1>
-    
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">`;
+var team = {};
+
+var manager = {};
+var engineers = [];
+var interns = [];
+// if the entry is blank
+const isAnswerBlank = async (input) =>
+{
+    if (input == '') return 'Can not leave blank';
+    else return true;
+}
+//for writing the buffer to disk copied from my last challenge same code please dont plagerise me
+function writeToFile(fileName, data) 
+{
+    fs.writeFile(('./result/'+ fileName),data,function(err)
+    {
+        if (err) throw err;
+        console.log ('Saved');
+    });
+}
+
+
+
+
+
+
+
 </body>
-</html>`
+</html>
