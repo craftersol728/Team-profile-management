@@ -1,8 +1,8 @@
 //imported required package
 var inquirer = require('inquirer');
 var fs = require('fs');
-const { default: Choice } = require('inquirer/lib/objects/choice');
-const { default: Choices } = require('inquirer/lib/objects/choices');
+// const { default: Choice } = require('inquirer/lib/objects/choice');
+// const { default: Choices } = require('inquirer/lib/objects/choices');
 
 //creating the html buffer
 var buf = `<!DOCTYPE html>
@@ -108,35 +108,35 @@ function buildHtml()
     </body>
     </html>`;
 
-    
-
  //saving our buffer to the disk
  writeToFile("output.html", buf);
 }
+
+
 //manager questions
 const managerQuestions = [
     {
     type:'input',
     name:'name',
-    message:'Team manager name is:'
+    message:'Team manager name is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'id',
-    message:'Team manager id is:'
+    message:'Team manager id is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'email',
-    message:'Team manager email is:'
+    message:'Team manager email is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'office',
-    message:'Team manager office number is:'
+    message:'Team manager office number is:',
     validate: isEmpty,
     },
 ];
@@ -145,25 +145,25 @@ const internQuestions = [
     {
     type:'input',
     name:'name',
-    message:'Intern name is:'
+    message:'Intern name is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'id',
-    message:'Intern id is:'
+    message:'Intern id is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'email',
-    message:'Intern email is:'
+    message:'Intern email is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'school',
-    message:'School Intern came from:'
+    message:'School Intern came from:',
     validate: isEmpty,
     },
 ];
@@ -172,25 +172,25 @@ const engineerQuestions = [
     {
     type:'input',
     name:'name',
-    message:'Engineer name is:'
+    message:'Engineer name is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'id',
-    message:'Engineer id is:'
+    message:'Engineer id is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'email',
-    message:'Engineer email is:'
+    message:'Engineer email is:',
     validate: isEmpty,
     },
     {
     type:'input',
     name:'github',
-    message:'Engineer\'s github username:'
+    message:'Engineer\'s github username:',
     validate: isEmpty,
     },
 ];

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/craftersol728/Team-profile-management#readme",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "node": "^19.2.0"
   }
 }
