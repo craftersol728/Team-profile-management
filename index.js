@@ -30,7 +30,7 @@ var buf = `<!DOCTYPE html>
     </style>
 </head>
 <body>
-        <div style"width:100%; height:auto;text-align:center;Background-color:white;">
+<div style="width: 100%; height: auto; text-align: center; background-color: rgb(192, 255, 234);">
             <h1> This Team </h1>
         </div>
         <br>
@@ -62,7 +62,7 @@ function buildHtml()
 {
     console.log("Entries submitted, check result folder for your html page");
     buf +=
-    `<div class ="col-sm member>
+    `<div class ="col-sm member">
     <h3>${manager.name}</h3>
     <h4>Manager</h4>
     <div class = "inner">
