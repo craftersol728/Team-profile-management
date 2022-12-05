@@ -17,7 +17,7 @@ var buf = `<!DOCTYPE html>
             padding: 25px
             margin: 50px;
             border-radius:25px;
-            box-shadow: opx 5px 5px;
+            box-shadow: 0px 5px 5px;
         }
         .inner{
             width: auto;
@@ -40,9 +40,8 @@ var manager = {};
 var engineers = [];
 var interns = [];
 // if the entry is blank
-const isAnswerBlank = async (input) =>
-{
-    if (input == '') return 'Can not leave blank';
+const isEmpty = async (input) =>{
+    if (input =='') return 'Can not be left empty';
     else return true;
 }
 //for writing the buffer to disk copied from my last challenge same code please dont plagerise me
@@ -56,10 +55,50 @@ function writeToFile(fileName, data)
 }
 
 
+//This will take all the entries and build an html page
+function buildHtml()
+{
+    console.log("Entries submitted, check result folder for your html page")
+    buf +=
+
+}
 
 
 
+//end of html page
+ buf +=
+    `</div>
+    </div>
+    </body>
+    </html>`;
 
+ //saving our buffer to the disk
+ writeToFile("output.html", buf);
+}
 
-</body>
-</html>
+const managerQuestions = [
+    {
+    type:'input',
+    name:'name',
+    message:'Team manager name is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'id',
+    message:'Team manager id is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'email',
+    message:'Team manager email is:'
+    validate: isEmpty,
+    },
+    {
+    type:'input',
+    name:'office',
+    message:'Team manager office number is:'
+    validate: isEmpty,
+    },
+];
