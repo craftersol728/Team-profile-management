@@ -15,7 +15,7 @@ var buf = `<!DOCTYPE html>
     <style>
         .member {
             width: auto;
-            background-color: #333;
+            background-color: #rgb(0, 247, 255);
             padding: 25px
             margin: 50px;
             border-radius:25px;
@@ -66,7 +66,7 @@ function buildHtml()
     <h3>${manager.name}</h3>
     <h4>Manager</h4>
     <div class = "inner">
-    id: ${manager.id} </br>
+    ID: ${manager.id} </br>
     Email: ${manager.email} </br>
     office number: ${manager.office}
     </div>`;
@@ -78,7 +78,7 @@ function buildHtml()
     <h3>${engineer.name}</h3>
     <h4>Engineer</h4>
     <div class="inner">
-    ID: ${engineer.ID}</br>
+    ID: ${engineer.id}</br>
     Email: ${engineer.email}</br>
     Office Number: ${engineer.github}
     </div>
@@ -200,12 +200,12 @@ function addMenu (){
         type:'list',
         name: 'selection',
         message:'add another person?',
-        choices : ['Add an Engineer','Add an Intern','finished'],
+        choices : ['add an Engineer','add an Intern','finished'],
     }]).then((response)=>{
         if(response.selection == 'add an Engineer') return addEngineer();
         else if (response.selection == 'add an Intern') return addIntern();
         else if (response.selection == 'finished') return buildHtml();
-        else return console.log(selection);
+        else return console.log(response.selection);
     })
 }
 
@@ -237,7 +237,7 @@ function addIntern()
     {
         newIntern = {};
         newIntern.name = answers.name;  
-        newIntern.ID = answers.ID;
+        newIntern.id = answers.id;
         newIntern.email = answers.email;
         newIntern.school = answers.school;
         interns.push(newIntern);
@@ -262,7 +262,7 @@ function addManager()
     {
         //manager.name = Object.values(answers)[0]; 
         manager.name = answers.name;  
-        manager.ID = answers.ID;
+        manager.id = answers.id;
         manager.email = answers.email;
         manager.office = answers.office;
 
