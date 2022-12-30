@@ -17,6 +17,6 @@ node index to start the program after installing inquirer 8.3.4
 ![Screenshot of website](./media/imagasde.png)
 
 ## Video
-![video tutorial](https://youtu.be/oUdqw_e5KBw)
+
 https://youtu.be/oUdqw_e5KBw
 
