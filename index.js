@@ -63,24 +63,25 @@ function buildHtml()
     console.log("Entries submitted, check result folder for your html page");
     buf +=
     `<div class ="col-sm member">
-    <h3>${manager.name}</h3>
-    <h4>Manager</h4>
+    <h4>${manager.name}</h4>
+    <h3>Manager</h3>
     <div class = "inner">
     ID: ${manager.id} </br>
     Email: ${manager.email} </br>
     office number: ${manager.office}
+    </div>
     </div>`;
 
     engineers.forEach(engineer =>
 {
     buf +=
     `<div class="col-sm member">
-    <h3>${engineer.name}</h3>
-    <h4>Engineer</h4>
+    <h4>${engineer.name}</h3>
+    <h3>Engineer</h3>
     <div class="inner">
     ID: ${engineer.id}</br>
     Email: ${engineer.email}</br>
-    Office Number: ${engineer.github}
+    Github Link: <a href="https://github.com/${engineer.github}"> ${engineer.github} </a>
     </div>
     </div>`;
 });
@@ -88,12 +89,12 @@ function buildHtml()
 {
     buf +=
     `<div class="col-sm member">
-    <h3>${intern.name}</h3>
-    <h4>Intern</h4>
+    <h4>${intern.name}</h4>
+    <h3>Intern</h3>
     <div class="inner">
     ID: ${intern.id}</br>
     Email: ${intern.email}</br>
-    Office Number: ${intern.school}
+    School that he graduated from: ${intern.school}
     </div>
     </div>`;
 });
